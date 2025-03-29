@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abrash Organics</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        header { background: #4CAF50; color: white; text-align: center; padding: 1rem; }
+        .container { width: 90%; margin: auto; padding: 20px; }
+        .product { display: flex; justify-content: space-between; flex-wrap: wrap; }
+        .product-card { width: 30%; border: 1px solid #ddd; padding: 15px; margin: 10px; text-align: center; }
+        .contact { text-align: center; margin-top: 20px; }
+        .cart { margin-top: 20px; text-align: center; }
+        button { background: #4CAF50; color: white; padding: 10px; border: none; cursor: pointer; }
+        button:hover { background: #45a049; }
+    </style>
+    <script>
+        let cart = [];
+        function addToCart(product, price) {
+            cart.push({ product, price });
+            alert(product + ' added to cart!');
+        }
+        function viewCart() {
+            let cartItems = cart.map(item => `${item.product} - PKR ${item.price}`).join('\n');
+            if(cart.length === 0) {
+                alert('Your cart is empty');
+            } else {
+                let paymentMethod = prompt('Your Cart:\n' + cartItems + '\n\nChoose Payment Method: COD, Bank Transfer, Easypaisa, JazzCash');
+                if(paymentMethod) {
+                    alert('Order placed successfully with ' + paymentMethod);
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Abrash Organics</h1>
+        <p>Pure, Natural & Healthy Products</p>
+    </header>
+    
+    <div class="container">
+        <h2>Our Products</h2>
+        <div class="product">
+            <div class="product-card">
+                <h3>Green Tea</h3>
+                <p>Price: PKR 2940 per kg</p>
+                <button onclick="addToCart('Green Tea', 2940)">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <h3>Chia Seeds</h3>
+                <p>Price: PKR 3570 per kg</p>
+                <button onclick="addToCart('Chia Seeds', 3570)">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <h3>Almond Oil</h3>
+                <p>Price: PKR 5810 per liter</p>
+                <button onclick="addToCart('Almond Oil', 5810)">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="cart">
+        <button onclick="viewCart()">Checkout</button>
+    </div>
+    
+    <div class="contact">
+        <h2>Contact Us</h2>
+        <p>WhatsApp: +92 XXX XXXX XXX</p>
+        <p>Email: contact@abrashorganics.com</p>
+    </div>
+</body>
+</html>
